@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35825.156 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aleksandr_Saharov_Lab1_Filters", "WindowsFormsApp1\Aleksandr_Saharov_Lab1_Filters.csproj", "{645B38F8-FF8E-4E20-95BA-615B05D7715D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{645B38F8-FF8E-4E20-95BA-615B05D7715D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{645B38F8-FF8E-4E20-95BA-615B05D7715D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{645B38F8-FF8E-4E20-95BA-615B05D7715D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{645B38F8-FF8E-4E20-95BA-615B05D7715D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {53161E72-A1D1-4166-8A05-7C0B2237DB5E}
+	EndGlobalSection
+EndGlobal
