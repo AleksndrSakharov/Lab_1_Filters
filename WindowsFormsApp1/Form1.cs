@@ -37,7 +37,7 @@ namespace WindowsFormsApp1
 
         private void инверсияToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            InvertFilter filter = new InvertFilter();
+            Filters filter = new InvertFilter();
             backgroundWorker1.RunWorkerAsync(filter);
         }
 
@@ -70,6 +70,18 @@ namespace WindowsFormsApp1
         private void button1_Click(object sender, EventArgs e)
         {
             backgroundWorker1.CancelAsync();
+        }
+
+        private void размытиеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filters filter = new BlurFilter();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void размытиепоГаусуToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filters filter = new GaussianFilter();
+            backgroundWorker1.RunWorkerAsync(filter);
         }
     }
 }
