@@ -374,4 +374,60 @@ namespace WindowsFormsApp1
         }
     }
 
+
+    class PerfectReflector : Filters
+    {
+        private (int maxR, int maxG, int maxB) maxRGB;
+
+        public (int maxR, int maxG, int maxB) ExtractMaxRGB(Bitmap image)
+        {
+            int maxR = 0, maxG = 0, maxB = 0;
+
+            for (int x = 0; x < image.Width; x++)
+            {
+                for (int y = 0; y < image.Height; y++)
+                {
+                    Color pixel = image.GetPixel(x, y);
+                    if (pixel.R > maxR) maxR = pixel.R;
+                    if (pixel.G > maxG) maxG = pixel.G;
+                    if (pixel.B > maxB) maxB = pixel.B;
+                }
+            }
+
+            return (maxR, maxG, maxB);
+        }
+        public override Bitmap processImage(Bitmap sourceImage, BackgroundWorker worker)
+        {
+            maxRGB = ExtractMaxRGB(sourceImage);
+            return base.processImage(sourceImage, worker);
+        }
+        protected Color calculateNewPixelColor(Bitmap sourceImage, int x, int y)
+        {
+            Color sourceColor = sourceImage.GetPixel(x, y);
+            int newR = (maxRGB.maxR != 0) ? Clamp(sourceColor.R * 255 / maxRGB.maxR, 0, 255) : sourceColor.R;
+            int newG = (maxRGB.maxG != 0) ? Clamp(sourceColor.G * 255 / maxRGB.maxG, 0, 255) : sourceColor.G;
+            int newB = (maxRGB.maxB != 0) ? Clamp(sourceColor.B * 255 / maxRGB.maxB, 0, 255) : sourceColor.B;
+            return Color.FromArgb(newR, newG, newB);
+        }
+    }
+
+
+    class TopHatFilter : Filters
+    {
+        private OpeningFilter opening = new OpeningFilter();
+
+        protected override Color calculateNewPixelColor(Bitmap sourceImage, int x, int y)
+        {
+            Bitmap openedImage = opening.processImage(sourceImage, null);
+
+            Color originalColor = sourceImage.GetPixel(x, y);
+            Color openedColor = openedImage.GetPixel(x, y);
+
+            int r = Clamp(originalColor.R - openedColor.R, 0, 255);
+            int g = Clamp(originalColor.G - openedColor.G, 0, 255);
+            int b = Clamp(originalColor.B - openedColor.B, 0, 255);
+
+            return Color.FromArgb(r, g, b);
+        }
+    }
 }
