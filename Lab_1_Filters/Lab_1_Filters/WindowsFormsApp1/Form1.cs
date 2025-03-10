@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class Form1 : Form
+    public partial class Form1: Form
     {
         Bitmap image;
         public Form1()
@@ -120,60 +120,6 @@ namespace WindowsFormsApp1
         {
             Filters filters = new WaveFilter();
             backgroundWorker1.RunWorkerAsync(filters);
-        }
-
-        private void переносToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Filters filters = new ShiftFilter();
-            backgroundWorker1.RunWorkerAsync(filters);
-        }
-
-        private void резкостьдопToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Filters filters = new SharpnessSecFilter();
-            backgroundWorker1.RunWorkerAsync(filters);
-        }
-
-        private void выделениеГраницToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Filters filters = new SharrFilter();
-            backgroundWorker1.RunWorkerAsync(filters);
-        }
-
-        private void dilationToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Filters filters = new DilationFilter();
-            backgroundWorker1.RunWorkerAsync(filters);
-        }
-
-        private void erosionToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Filters filter = new ErosionFilter();
-            backgroundWorker1.RunWorkerAsync(filter);
-        }
-
-        private void openingToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Filters filter = new OpeningFilter();
-            backgroundWorker1.RunWorkerAsync(filter);
-        }
-
-        private void closingToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Filters filter = new ClosingFilter();
-            backgroundWorker1.RunWorkerAsync(filter);
-        }
-
-        private void topHatToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Filters filter = new TopHatFilter();
-            backgroundWorker1.RunWorkerAsync(filter);
-        }
-
-        private void gradientToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Filters filtered = new GradientFilter();
-            backgroundWorker1.RunWorkerAsync(filtered);
         }
     }
 }
